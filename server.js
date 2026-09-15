@@ -163,9 +163,9 @@ console.log(payload);
   formData.append("client_id", LINEWORKS_CLIENT_ID);
   formData.append("client_secret", LINEWORKS_CLIENT_SECRET);
   formData.append("assertion", assertion);
- formData.append(
+formData.append(
   "scope",
-  "bot bot.message"
+  "openid profile email bot bot.message user user.read group.read"
 );
 console.log("TOKEN URL");
 console.log(
