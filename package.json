@@ -1,8 +1,15 @@
 {
   "name": "lineworks-kintone-demo",
   "version": "1.0.0",
+  "description": "LINE WORKS Bot and Kintone integration demo",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2"
   }
 }
