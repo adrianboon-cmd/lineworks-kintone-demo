@@ -165,7 +165,7 @@ console.log(payload);
   formData.append("assertion", assertion);
 formData.append(
   "scope",
-  "openid profile email bot bot.message user user.read group.read"
+"bot bot.message"
 );
 console.log("TOKEN URL");
 console.log(
