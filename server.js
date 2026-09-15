@@ -169,7 +169,7 @@ console.log(payload);
 );
 console.log("TOKEN URL");
 console.log(
-  "https://auth.worksmobile.com/b/400781256/oauth2/v2.0/token"
+  "https://auth.worksmobile.com/oauth2/v2.0/token",
 );
   const response = await fetch(
   "https://auth.worksmobile.com/oauth2/v2.0/token",
