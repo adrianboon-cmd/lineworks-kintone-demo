@@ -106,7 +106,9 @@ async function getLineWorksAccessToken() {
   console.log("CLIENT_ID =", LINEWORKS_CLIENT_ID);
   console.log("SERVICE_ACCOUNT =", LINEWORKS_SERVICE_ACCOUNT);
   console.log("PRIVATE_KEY_EXISTS =", !!LINEWORKS_PRIVATE_KEY);
-
+console.log(
+  LINEWORKS_PRIVATE_KEY.substring(0, 50)
+);
   const now = Math.floor(Date.now() / 1000);
 
   if (
