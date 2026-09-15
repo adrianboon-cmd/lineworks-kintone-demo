@@ -165,7 +165,7 @@ console.log(
   "https://auth.worksmobile.com/b/400781256/oauth2/v2.0/token"
 );
   const response = await fetch(
-   "https://auth.worksmobile.com/b/400781256/oauth2/v2.0/token",
+  "https://auth.worksmobile.com/oauth2/v2.0/token",
     {
       method: "POST",
       headers: {
@@ -177,7 +177,18 @@ console.log(
   );
 console.log("TOKEN STATUS =", response.status);
 console.log("TOKEN STATUS TEXT =", response.statusText);
-  const data = await response.json();
+const text = await response.text();
+
+console.log("TOKEN RESPONSE RAW=");
+console.log(text);
+
+let data = {};
+
+try {
+  data = JSON.parse(text);
+} catch (e) {
+  console.log("NOT JSON RESPONSE");
+}
 console.log(
   "TOKEN RESPONSE =",
   JSON.stringify(data)
