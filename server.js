@@ -156,10 +156,16 @@ console.log(assertion.substring(0, 50));
   formData.append("client_id", LINEWORKS_CLIENT_ID);
   formData.append("client_secret", LINEWORKS_CLIENT_SECRET);
   formData.append("assertion", assertion);
-  formData.append("scope", "bot");
-
+ formData.append(
+  "scope",
+  "bot bot.message"
+);
+console.log("TOKEN URL");
+console.log(
+  "https://auth.worksmobile.com/b/400781256/oauth2/v2.0/token"
+);
   const response = await fetch(
-    "https://auth.worksmobile.com/oauth2/v2.0/token",
+   "https://auth.worksmobile.com/b/400781256/oauth2/v2.0/token",
     {
       method: "POST",
       headers: {
@@ -169,9 +175,13 @@ console.log(assertion.substring(0, 50));
       body: formData.toString()
     }
   );
-
+console.log("TOKEN STATUS =", response.status);
+console.log("TOKEN STATUS TEXT =", response.statusText);
   const data = await response.json();
-
+console.log(
+  "TOKEN RESPONSE =",
+  JSON.stringify(data)
+);
   if (!response.ok || !data.access_token) {
     console.error(
       "LINE WORKS token error:",
