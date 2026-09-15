@@ -15,7 +15,45 @@ const server = http.createServer(async (req, res) => {
     res.end("LINE WORKS x Kintone API Running");
     return;
   }
+if (req.url.startsWith("/customer/")) {
 
+  const customerNo =
+    decodeURIComponent(req.url.split("/")[2]);
+
+  const apiUrl =
+    `${DOMAIN}/k/v1/records.json?app=${APP_ID}&query=客戶編號="${customerNo}"`;
+
+  const response = await fetch(apiUrl, {
+    method: "GET",
+    headers: {
+      "X-Cybozu-API-Token": TOKEN
+    }
+  });
+
+  const data = await response.json();
+
+  if (data.records.length === 0) {
+    res.writeHead(404);
+    res.end("找不到客戶");
+    return;
+  }
+
+  const record = data.records[0];
+
+  const result = {
+    客戶名稱: record["客戶名稱"].value,
+    聯絡人: record["聯絡人"].value,
+    電話: record["電話"].value
+  };
+
+  res.writeHead(200, {
+    "Content-Type": "application/json"
+  });
+
+  res.end(JSON.stringify(result, null, 2));
+
+  return;
+}
   if (req.url === "/test") {
 
     const apiUrl =
