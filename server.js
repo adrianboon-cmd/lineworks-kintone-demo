@@ -144,7 +144,9 @@ console.log(
       algorithm: "RS256"
     }
   );
-
+  
+console.log("JWT OK");
+console.log(assertion.substring(0, 50));
   const formData = new URLSearchParams();
 
   formData.append(
