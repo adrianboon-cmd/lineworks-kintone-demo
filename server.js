@@ -102,15 +102,20 @@ function verifyLineWorksSignature(rawBody, receivedSignature) {
 // ========================================
 
 async function getLineWorksAccessToken() {
+
+  console.log("CLIENT_ID =", LINEWORKS_CLIENT_ID);
+  console.log("SERVICE_ACCOUNT =", LINEWORKS_SERVICE_ACCOUNT);
+  console.log("PRIVATE_KEY_EXISTS =", !!LINEWORKS_PRIVATE_KEY);
+
   const now = Math.floor(Date.now() / 1000);
 
-  // Token 尚有 60 秒以上效期就直接沿用
   if (
     tokenCache.accessToken &&
     tokenCache.expiresAt > now + 60
   ) {
     return tokenCache.accessToken;
   }
+
 
   if (
     !LINEWORKS_CLIENT_ID ||
