@@ -146,7 +146,14 @@ console.log(
   );
   
 console.log("JWT OK");
-console.log(assertion.substring(0, 50));
+const payload = JSON.parse(
+  Buffer.from(
+    assertion.split(".")[1],
+    "base64url"
+  ).toString()
+);
+
+console.log(payload);
   const formData = new URLSearchParams();
 
   formData.append(
